@@ -1,6 +1,9 @@
+#include "lib.h"
+
 #include <iostream>
 
-int main() {
-    std::cout << "Hello, Wor123ld!" << std::endl;
+int main (int, char **) {
+    std::cout << "Version: " << version() << std::endl;
+    std::cout << "Hello, world!" << std::endl;
     return 0;
 }
