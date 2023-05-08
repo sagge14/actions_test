@@ -5,7 +5,10 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VESRION})
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+set(Boost_INCLUDE_DIR C:/boost_1_82_0/)
+set(Boost_LIBRARY_DIR C:/boost_1_82_0/stage/lib)
+
+find_package(Boost COMPONENTS REQUIRED)
 
 configure_file(version.h.in version.h)
 
