@@ -1,14 +1,18 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.25)
+
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
+set(Boost_NO_WARN_NEW_VERSIONS 1)
+set(Boost_DEBUG ON)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VESRION})
 
-set(Boost_DEBUG ON)
-
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-
 
 configure_file(version.h.in version.h)
 
@@ -24,7 +28,7 @@ target_include_directories(helloworld
         PRIVATE "${CMAKE_BINARY_DIR}"
         )
 set_target_properties(test_version PROPERTIES
-        COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+        COMPILE_DEFINITIONS BOOST_TEST_STATIC_LINK
         INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
         )
 
